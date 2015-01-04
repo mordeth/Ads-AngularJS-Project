@@ -2,12 +2,25 @@
 <div style="margin-top: 100px">
 
 <div class="row">
-<div class="col-md-9">
-	<ul id="adsList">
-		<li ng-repeat="ad in adsData.ads">
-				 {{ad.title}}
-		</li>
-	</ul>	
-</div>
-
+	<div class="col-md-9">
+		<ul id="adsList">
+			<li ng-repeat="ad in adsData.ads">
+					 {{ad.title}}
+			</li>
+		</ul>	
+	</div>
+	<div class="col-md-3">
+		<h3>Towns</h3>
+		<ul id="townList">
+			<li ng-repeat="town in townsData">
+					 {{town.name}}
+			</li>
+		</ul>	
+		<h3>Categories</h3>
+		<ul id="categoryList">
+			<li ng-repeat="cat in categoryData">
+					 {{cat.name}}
+			</li>
+		</ul>	
+	</div>
 </div>

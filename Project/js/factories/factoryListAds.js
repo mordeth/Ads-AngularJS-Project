@@ -12,26 +12,24 @@ adsApp.factory('adsRes', function($http){
 			})
 		},
 
-		/*
 		getAllTowns:function(success){
-		$http({method:'GET',url:apiUrl+'towns'})
-		.success(function(data,status,headers,config){
-		success(data);
-		})
-		.error(function(data,status,headers,config){
-		$log.warn(data);
-		})
+			$http({method:'GET',url:apiUrl+'towns'})
+			.success(function(data,status,headers,config){
+				success(data);
+			})
+			.error(function(data,status,headers,config){
+				$log.warn(data);
+			})
 		},
 
 		getAllCategory:function(success){
-		$http({method:'GET',url:apiUrl+'categories'})
-		.success(function(data,status,headers,config){
-		success(data);
-		})
-		.error(function(data,status,headers,config){
-		$log.warn(data);
-		})
+			$http({method:'GET',url:apiUrl+'categories'})
+			.success(function(data,status,headers,config){
+				success(data);
+			})
+			.error(function(data,status,headers,config){
+				$log.warn(data);
+			})
 		}
-		*/
 	}
 })
