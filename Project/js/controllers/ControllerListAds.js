@@ -1,5 +1,7 @@
-adsApp.controller("ControllerListAds",  ['$scope', function($scope) {
-  $scope.pageTitle = 'Home';
+adsApp.controller("ControllerListAds",  ['$scope', 'adsRes', function($scope, adsRes) {
+  adsRes.getAllAds(function(response){
+		$scope.adsData=response;
+	})
 }])
 
 

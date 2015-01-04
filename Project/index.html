@@ -16,16 +16,24 @@
 		<script type="text/javascript" src="js/main.js"></script>
 
 		<script type="text/javascript" src="js/controllers/ControllerListAds.js"></script>
+		<script type="text/javascript" src="js/controllers/ControllerMain.js"></script>
+
+		<script type="text/javascript" src="js/factories/factoryListAds.js"></script>
 	</head>
-<body>
-	<div class="navbar navbar-default navbar-fixed-top">
-		<h1>Ads - {{ pageTitle }}</h1>
-	</div>
-	
-	<div ng-view class="container"></div>
-	
-	<footer class="footer">
-		<p>&copy; 2014 by Software University Foundation, No Rights Reserved</p>
-	</footer>
-</body>
+	<body ng-controller="MainController">
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<h1>Ads - {{pageTitle}}</h1>
+			</div>
+		</div>
+		
+		<div ng-view class="container"></div>
+		
+		<footer class="footer">
+			<div class="container">
+				<p>&copy; 2014 by Software University Foundation, No Rights Reserved</p>
+			</div>
+		</footer>
+
+	</body>
 </html>
