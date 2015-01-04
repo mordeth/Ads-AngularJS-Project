@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-	<html ng-app="adsProject">
+	<html ng-app="adsApp">
 	<head>
 		<title>Ads - AngularJS Project</title>
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +11,21 @@
 		<script type="text/javascript" src="inc/angular-resource.js"></script>
 		<script type="text/javascript" src="inc/angular-route.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+		
+		<script type="text/javascript" src="js/main.js"></script>
+
+		<script type="text/javascript" src="js/controllers/ControllerListAds.js"></script>
 	</head>
 <body>
-	<div ng-include src="templates/header.html"></div>
+	<div class="navbar navbar-default navbar-fixed-top">
+		<h1>Ads - {{ pageTitle }}</h1>
+	</div>
+	
 	<div ng-view class="container"></div>
-	<div ng-include src="templates/footer.html"></div>
+	
+	<footer class="footer">
+		<p>&copy; 2014 by Software University Foundation, No Rights Reserved</p>
+	</footer>
 </body>
 </html>
