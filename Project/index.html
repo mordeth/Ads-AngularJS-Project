@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="inc/angular.min.js"></script>
 		<script type="text/javascript" src="inc/angular-resource.js"></script>
 		<script type="text/javascript" src="inc/angular-route.js"></script>
+		<script type="text/javascript" src="inc/dirPagination.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 		
@@ -27,8 +28,15 @@
 			</div>
 		</div>
 		
-		<div ng-view class="container"></div>
-		
+		<div class="container" style="margin-top: 150px;">
+			<div class="row">
+				<div class="col-lg-3">
+					<h3>Navigation</h3>
+				</div>
+				<div ng-view class="col-lg-9"></div>
+			</div>
+		</div>
+			
 		<footer class="footer">
 			<div class="container">
 				<p>&copy; 2014 by Software University Foundation, No Rights Reserved</p>
