@@ -38,18 +38,24 @@
 		</ul>	
 	</div>
 	<div class="col-lg-3">
-		<h3>Towns</h3>
-		<ul id="townList">
-			<li ng-repeat="town in townsData">
-					 {{town.name}}
-			</li>
-		</ul>	
 		<h3>Categories</h3>
-		<ul id="categoryList">
-			<li ng-repeat="cat in categoryData">
-					 {{cat.name}}
+		<ul>
+			<li><a ng-click="filterByTown('', '')">All</a></li>
+			<li ng-repeat="category in categoriesFeed">
+				<a ng-click="filterByCategory(category.id, category.name)">
+					{{category.name}}
+				</a>
 			</li>
-		</ul>	
+		</ul>
+		<h3>Town</h3>
+		<ul>
+			<li><a ng-click="filterByTown('', '')">All</a></li>
+			<li ng-repeat="town in townsFeed">
+				<a ng-click="filterByTown(town.id, town.name)">
+					{{town.name}}
+				</a>
+			</li>
+		</ul>
 	</div>
 </div>
 <div class="row pagination-div">
