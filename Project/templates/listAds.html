@@ -1,12 +1,12 @@
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-lg-9">
 		<ul id="adsList">
-			<li ng-repeat="ad in adsData.ads">
-					 {{ad.title}}
+			<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage" total-items="totalAds">
+				{{ad.title}}
 			</li>
 		</ul>	
 	</div>
-	<div class="col-md-3">
+	<div class="col-lg-3">
 		<h3>Towns</h3>
 		<ul id="townList">
 			<li ng-repeat="town in townsData">
@@ -19,5 +19,10 @@
 					 {{cat.name}}
 			</li>
 		</ul>	
+	</div>
+</div>
+<div class="row pagination-div">
+	<div class='col-md-9 col-sm-10 col-xs-12 col-centered'>
+		<dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)" template-url="templates/dirPagination.tpl.html"></dir-pagination-controls>
 	</div>
 </div>

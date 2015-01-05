@@ -1,15 +1,28 @@
 adsApp.controller("ControllerListAds",  ['$scope', 'adsRes', function($scope, adsRes) {
-  adsRes.getAllAds(function(response){
-		$scope.adsData=response;
-	}),
-	adsRes.getAllTowns(function(response){
-		$scope.townsData=response;
-	}),
-	adsRes.getAllCategory(function(response){
-		$scope.categoryData=response;
-	})
+	var currentCategoryId = '';
+	var currentTownId = '';
+	
+	//Pagination with dirPaginate
+	var currentPage = 1;
+    $scope.totalAds = 0;
+    $scope.adsPerPage = 5;
+    getResultsPage(1);
 
-	console.log($scope);
+    $scope.pagination = {
+        current: 1
+    };
+
+    $scope.pageChanged = function(newPage) {
+        getResultsPage(newPage);
+    };
+	
+    function getResultsPage(pageNumber) {
+        adsRes.getAll(pageNumber, currentTownId, currentCategoryId).then(function(response) {
+			$scope.adsData = response;
+			$scope.totalAds = parseInt(response.numPages) * 5;
+			currentPage = pageNumber;
+		});
+    }
 }])
 
 
