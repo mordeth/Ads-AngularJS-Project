@@ -84,3 +84,15 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #eee;
     text-decoration: none;
 }    
+
+.whiteBG {
+	background: #fff;
+}
+
+label.col-lg-6 {
+	padding-left: 0px;
+} 
+
+footer .container {
+	padding-top: 20px;
+}
