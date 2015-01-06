@@ -1,5 +1,5 @@
 <!-- register-form -->
-<form name="register" class="form-horizontal col-lg-12 whiteBG">
+<form name="formRegister" class="form-horizontal col-lg-12 whiteBG">
     <legend class="text-center">Register</legend>
     <div class="row form-group">
       <div class="col-lg-6">
@@ -53,8 +53,7 @@
       <div class="col-lg-6">
         <label for="town" class="col-lg-6" >Town: </label>
         <select class="form-control" id="select" name="town" ng-model="userDetails.town">
-          <option>select</option>
-          <option ng-repeat="town in townsData" value="{{town.id}}">{{town.name}}</option>
+          <option ng-repeat="town in townsFeed" value="{{town.id}}">{{town.name}}</option>
         </select>
       </div>
     </div>
@@ -63,7 +62,7 @@
     <div class="form-group row">
       <div class="text-centered">
         <a class="btn btn-default" href="#/">Cancel</a>
-        <button name="login" ng-click="register(userDetails, register)" type="submit" class="btn btn-primary">Register</button>
+        <button name="login" ng-click="register(userDetails, formRegister)" type="submit" class="btn btn-primary">Register</button>
       </div>
     </div>
 </form>

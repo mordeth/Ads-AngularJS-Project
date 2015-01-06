@@ -1,4 +1,5 @@
 adsApp.controller("ControllerLogin",  ['$scope', '$location', 'adsUser', 'adsMain', function($scope, $location, adsUser, adsMain) {
+	
 	$scope.login = function(userDetails, form) {
     adsUser.login(userDetails).then(function(response) {
         //adsUser.setUserSession(response);
@@ -12,4 +13,5 @@ adsApp.controller("ControllerLogin",  ['$scope', '$location', 'adsUser', 'adsMai
         }
     });
 	};
+	
 }])
