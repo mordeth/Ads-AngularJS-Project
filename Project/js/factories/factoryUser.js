@@ -67,7 +67,6 @@ adsApp.factory('adsUser', function($http, $q){
 			return headers;
 	 }
 
-
 	return{
 		login: login,
 		register: register,

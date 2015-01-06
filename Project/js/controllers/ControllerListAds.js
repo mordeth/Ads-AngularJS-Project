@@ -1,4 +1,4 @@
-adsApp.controller("ControllerListAds",  ['$scope', 'adsRes', 'adsMain', function($scope, adsRes, adsMain) {
+adsApp.controller("ControllerListAds",  ['$scope', '$location', '$rootScope', 'adsRes', 'adsMain', function($scope, $location, $rootScope, adsRes, adsMain) {
 	var ajaxError = "Error loading feed, please try again later!";
     var selectedCategory = '';
 	var selectedTown = '';
@@ -17,6 +17,8 @@ adsApp.controller("ControllerListAds",  ['$scope', 'adsRes', 'adsMain', function
     $scope.pageChanged = function(newPage) {
         getResultsPage(newPage);
     };
+
+    $rootScope.$broadcast('pageChanged', { pageTitle: "Home"});
 	
     function getResultsPage(pageNumber) {
         adsRes.getAll(pageNumber, selectedTown, selectedCategory).then(function(response) {
