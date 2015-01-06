@@ -3,7 +3,17 @@ var adsApp = angular.module("adsApp", ['ngRoute', 'ngResource', 'angularUtils.di
 	$routeProvider.when('/',
 	{
 		controller: 'ControllerListAds',
-		templateUrl: "/Project/templates/listAds.html"
+		templateUrl: 'templates/listAds.html'
+	}).
+	when('/login', 
+	{
+		controller: 'ControllerLogin',
+		templateUrl: 'templates/login.html'
+	}).
+	when('/register', 
+	{
+		controller: 'ControllerRegister',
+		templateUrl: 'templates/register.html'
 	})
 
 	$routeProvider.otherwise({redirectTo:'/'});

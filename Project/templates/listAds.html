@@ -40,30 +40,32 @@
 				</div>
 			</li>
 		</ul>	
+		<div class='col-md-9 col-sm-10 col-xs-12 text-centered'>
+			<dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)" template-url="templates/dirPagination.tpl.html"></dir-pagination-controls>
+		</div>
 	</div>
 	<div class="col-lg-3">
-		<h3>Categories</h3>
-		<ul>
-			<li><a ng-click="filterByCategory('', '')">All</a></li>
-			<li ng-repeat="category in categoriesFeed">
-				<a ng-click="filterByCategory(category.id, category.name)">
-					{{category.name}}
-				</a>
-			</li>
-		</ul>
-		<h3>Town</h3>
-		<ul>
-			<li><a ng-click="filterByTown('', '')">All</a></li>
-			<li ng-repeat="town in townsFeed">
-				<a ng-click="filterByTown(town.id, town.name)">
-					{{town.name}}
-				</a>
-			</li>
-		</ul>
-	</div>
-</div>
-<div class="row pagination-div">
-	<div class='col-md-9 col-sm-10 col-xs-12 col-centered'>
-		<dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)" template-url="templates/dirPagination.tpl.html"></dir-pagination-controls>
+		<div class="sidebar">
+			<h3>Categories</h3>
+			<ul class="nav">
+				<li><a ng-click="filterByCategory('', '')">All</a></li>
+				<li ng-repeat="category in categoriesFeed" ng-class="{active: category.id === idSelectedCat}">
+					<a ng-click="filterByCategory(category.id, category.name)">
+						{{category.name}}
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="sidebar">
+			<h3>Town</h3>
+			<ul class="nav">
+				<li><a ng-click="filterByTown('', '')">All</a></li>
+				<li ng-repeat="town in townsFeed" ng-class="{active: town.id === idSelectedTown}">
+					<a ng-click="filterByTown(town.id, town.name)">
+						{{town.name}}
+					</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>

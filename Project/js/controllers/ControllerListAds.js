@@ -46,6 +46,7 @@ adsApp.controller("ControllerListAds",  ['$scope', 'adsRes', 'adsMain', function
         if (response.ads.length === 0) {
          $scope.noAds = true;
         }
+        $scope.idSelectedCat = categoryId;
 
       }, function(error) {
         adsMain.displayMessage(ajaxError, "warning");
@@ -72,6 +73,8 @@ adsApp.controller("ControllerListAds",  ['$scope', 'adsRes', 'adsMain', function
         if (response.ads.length === 0) {
          $scope.noAds = true;
         }
+
+        $scope.idSelectedTown = townId;
 
       }, function(error) {
         adsMain.displayMessage(ajaxError, "warning");

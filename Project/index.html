@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="inc/jquery.min.js"></script>
 		<script type="text/javascript" src="inc/angular.min.js"></script>
 		<script type="text/javascript" src="inc/angular-resource.js"></script>
@@ -19,21 +20,47 @@
 
 		<script type="text/javascript" src="js/controllers/ControllerListAds.js"></script>
 		<script type="text/javascript" src="js/controllers/ControllerMain.js"></script>
+		<script type="text/javascript" src="js/controllers/ControllerRegistration.js"></script>
+		<script type="text/javascript" src="js/controllers/ControllerLogin.js"></script>
 
 		<script type="text/javascript" src="js/factories/factoryListAds.js"></script>
 		<script type="text/javascript" src="js/factories/factoryMain.js"></script>
 	</head>
 	<body ng-controller="MainController">
-		<div class="navbar navbar-default navbar-fixed-top">
+		<div class="navbar navbar-default">
 			<div class="container">
-				<h1>Ads - {{pageTitle}}</h1>
+				<div class="col-lg-6">
+					<h1>Ads - {{pageTitle}}</h1>
+				</div>
+				<div class="col-lg-6">
+					<ul class="nav navbar-nav pull-right">
+						<li>
+							<a href="#/login" ng-if="!isUserLogged">Login</a>
+						</li>
+						<li>
+							<a href="#/register" ng-if="!isUserLogged">Register</a>
+						</li>
+						<li>
+							<a ng-if="isUserLogged" ng-click="logout()">Logout</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
-		
-		<div class="container" style="margin-top: 150px;">
+		<div class="container">
 			<div class="row">
 				<div class="col-lg-3">
-					<h3>Navigation</h3>
+					<div class="sidebar" ng-if="!isUserLogged">
+						<h3>Navigation</h3>
+						<ul class="nav">
+							<li>
+								<a href="#/login" ng-if="!isUserLogged">Login</a>
+							</li>
+							<li>
+								<a href="#/register" ng-if="!isUserLogged">Register</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 				<div ng-view class="col-lg-9"></div>
 			</div>
