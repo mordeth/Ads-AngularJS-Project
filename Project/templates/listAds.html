@@ -1,5 +1,9 @@
 <div class="row">
 	<div class="col-lg-9">
+		<div class="row col centered" ng-if="noAds">
+			<h2 class="text-center">No ads in this category.</h2>
+		</div>
+
 		<ul id="adsList">
 			<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage" total-items="totalAds">
 				<div class="row headingArea">

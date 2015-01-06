@@ -2,6 +2,7 @@ adsApp.controller("ControllerListAds",  ['$scope', 'adsRes', 'adsMain', function
 	var ajaxError = "Error loading feed, please try again later!";
     var selectedCategory = '';
 	var selectedTown = '';
+    $scope.noAds = false;
 	
 	//Pagination with dirPaginate
 	var currentPage = 1;
@@ -41,6 +42,11 @@ adsApp.controller("ControllerListAds",  ['$scope', 'adsRes', 'adsMain', function
         $scope.totalAds = parseInt(response.numPages) * 5;
         selectedCategory = categoryId;
 
+        $scope.noAds = false;
+        if (response.ads.length === 0) {
+         $scope.noAds = true;
+        }
+
       }, function(error) {
         adsMain.displayMessage(ajaxError, "warning");
       });
@@ -61,6 +67,11 @@ adsApp.controller("ControllerListAds",  ['$scope', 'adsRes', 'adsMain', function
     
         $scope.totalAds = parseInt(response.numPages) * 5;
         selectedTown = townId;
+
+        $scope.noAds = false;
+        if (response.ads.length === 0) {
+         $scope.noAds = true;
+        }
 
       }, function(error) {
         adsMain.displayMessage(ajaxError, "warning");
