@@ -34,11 +34,11 @@ adsApp.controller("ControllerListAds",  ['$scope', 'adsRes', 'adsMain', function
     });
 
     $scope.filterByCategory = function(categoryId, cateogryName) {
-      adsRes.getAll(categoryId, selectedTown, currentPage).then(function(response) {
+      adsRes.getAll(currentPage, selectedTown, categoryId).then(function(response) {
        
         $scope.adsData = response;
     
-        $scope.totalAds = parseInt(adsRes.getAll.numPages) * 5;
+        $scope.totalAds = parseInt(response.numPages) * 5;
         selectedCategory = categoryId;
 
       }, function(error) {
@@ -55,11 +55,11 @@ adsApp.controller("ControllerListAds",  ['$scope', 'adsRes', 'adsMain', function
     });
 
     $scope.filterByTown = function(townId, townName) {
-      adsRes.getAll(selectedCategory, townId, currentPage).then(function(response) {
+      adsRes.getAll(currentPage, townId, selectedCategory).then(function(response) {
        
         $scope.adsData = response;
     
-        $scope.totalAds = parseInt(adsRes.getAll.numPages) * 5;
+        $scope.totalAds = parseInt(response.numPages) * 5;
         selectedTown = townId;
 
       }, function(error) {
