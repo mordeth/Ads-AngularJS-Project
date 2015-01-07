@@ -1,0 +1,57 @@
+<div class="profilePage">
+	<div class="col-lg-5 whiteBG">
+		<form name="formProfile" class="form-horizontal col-lg-12">
+				<legend class="text-center">Edit Profile</legend>
+				<div class="form-group">
+						<label for="name">Name: <b class="text-danger">*</b></label>
+						<input type="text" name="name" class="form-control" id="name" placeholder="Name" ng-model="formProfile.name" required>
+				</div>
+				<div class="form-group">
+						<label for="email">Email: <b class="text-danger">*</b></label>
+						<input type="email" name="email" class="form-control" id="email" placeholder="Email" ng-model="formProfile.email" required>
+				</div>
+				<div class="form-group">
+						<label for="phoneNumber">Pohone:<b class="text-danger">*</b></label>
+						<input type="text" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone" ng-model="formProfile.phoneNumber" required>
+				</div>
+				<div class="form-group">
+						<label for="town">Town: </label>
+						<select class="form-control" id="town" ng-model="formProfile.townId">
+							<option value="">None</option>
+							<option ng-repeat="town in townsFeed" value="{{town.id}}">{{town.name}}</option>
+						</select>
+				</div>
+
+				<div class="form-group">
+					<div class="text-centered">
+						<a class="btn btn-default" href="#/home">Cancel</a>
+						<button name="update" ng-click="updateProfile(formProfile)" type="submit" class="btn btn-primary">Update</button>
+					</div>
+				</div>
+		</form>
+	</div>
+	<div class="col-lg-1"></div>
+	<div class="col-lg-5 whiteBG">
+			<form name="formPassword" class="form-horizontal col-lg-12">
+				<legend class="text-center">Change Password</legend>
+				<div class="row form-group">
+						<label for="oldPassword" class="col-lg-8">Old password: <b class="text-danger">*</b></label>
+						<input type="password" name="oldPassword" class="form-control" id="name" placeholder="Old password" ng-model="userDetails.oldPassword" required>
+				</div>
+				<div class="row form-group">
+						<label for="newPassword" class="col-lg-8">New password: <b class="text-danger">*</b></label>
+						<input type="password" name="newPassword" class="form-control" id="newPassword" placeholder="New password" ng-model="userDetails.newPassword" required>
+				</div>
+				<div class="row form-group">
+						<label for="confirmPassword" class="col-lg-8">Confirm new password:<b class="text-danger">*</b></label>
+						<input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirm new password" ng-model="userDetails.confirmPassword" required>
+				</div>
+				<div class="form-group ">
+					<div class="text-centered">
+						<a class="btn btn-default" href="#/home">Cancel</a>
+						<button name="update" ng-click="changePassword(userDetails, formPassword)" type="submit" class="btn btn-primary">Change</button>
+					</div>
+				</div>
+		</form>
+	</div>
+</div>

@@ -1,4 +1,3 @@
-<!-- register-form -->
 <form name="formRegister" class="form-horizontal col-lg-12 whiteBG">
     <legend class="text-center">Register</legend>
     <div class="row form-group">
@@ -9,7 +8,6 @@
         <input type="text" name="username" class="form-control" id="username" placeholder="Username" ng-model="userDetails.username" required>
       </div>
     </div>
-    <!-- password-->
     <div class="form-group row">
       <div class="col-lg-6">
         <div>
@@ -17,7 +15,6 @@
         </div>
         <input type="password" name="password" class="form-control" id="password" placeholder="Password" ng-model="userDetails.password" required>
       </div>
-      <!-- confirm password-->
       <div class="col-lg-6">
         <div>
           <label for="confirmPassword" class="col-lg-6" id="confirm-password-label">Confirm password: <span class="text-danger">*</span></label>
@@ -25,7 +22,6 @@
         <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirm password" ng-model="userDetails.confirmPassword" required>
       </div>
     </div>
-    <!-- name-->
     <div class="form-group row">
       <div class="col-lg-6">
         <div>
@@ -33,7 +29,6 @@
         </div>
         <input type="text" name="name" class="form-control" id="name" placeholder="Name" ng-model="userDetails.name" required>
       </div>
-      <!-- email-->
       <div class="col-lg-6">
         <div>
           <label for="email" class="col-lg-6" >Email: <span class="text-danger">*</span></label>
@@ -41,7 +36,6 @@
         <input type="email" name="email" class="form-control" id="email" placeholder="Email" ng-model="userDetails.email" required>
       </div>
     </div>
-    <!-- phone-->
     <div class="form-group row">
       <div class="col-lg-6">
         <div>
@@ -49,7 +43,6 @@
         </div>
         <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone" ng-model="userDetails.phone" required>
       </div>
-      <!-- town-->
       <div class="col-lg-6">
         <label for="town" class="col-lg-6" >Town: </label>
         <select class="form-control" id="select" name="town" ng-model="userDetails.town">
@@ -57,9 +50,7 @@
         </select>
       </div>
     </div>
-
-    <!-- register submit-->
-    <div class="form-group row">
+    <div class="form-group">
       <div class="text-centered">
         <a class="btn btn-default" href="#/">Cancel</a>
         <button name="login" ng-click="register(userDetails, formRegister)" type="submit" class="btn btn-primary">Register</button>

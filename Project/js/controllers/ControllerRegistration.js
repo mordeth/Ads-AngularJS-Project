@@ -1,5 +1,7 @@
 adsApp.controller("ControllerRegister",  ['$scope', '$location', '$rootScope', 'adsUser', 'adsMain', 'adsRes', function($scope, $location, $rootScope, adsUser, adsMain, adsRes) {
-	
+	if (authorizationService.userIsLogged()) {
+		$location.path('/user/ads');
+	}
 	adsRes.getTowns().then(function(response) {
       $scope.townsFeed = response;
   }, function(error) {
@@ -10,15 +12,9 @@ adsApp.controller("ControllerRegister",  ['$scope', '$location', '$rootScope', '
 
 	$scope.register = function(userDetails, form) {
 		adsUser.register(userDetails).then(function(response) {
-			//adsUser.setUserSession(response);
 			adsMain.displayMessage("User account created successfully. Please login!", "success");
 		}, function(error) {
-
-			console.log(error.modelState);
-
-				adsMain.displayMessage(value, "success");
-
-		    
+			adsMain.displayMessage(value, "error");
 		});
 	};
 
