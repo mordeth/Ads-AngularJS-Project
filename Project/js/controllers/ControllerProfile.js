@@ -1,4 +1,4 @@
-adsApp.controller("ControllerProfile",  ['$scope', '$location', '$rootScope', '$cookieStore', 'adsProfile', 'adsMain', 'adsRes', function($scope, $location, $rootScope, $cookieStore, adsProfile, adsMain, adsRes) {
+adsApp.controller("ControllerProfile",  ['$scope', '$location', '$rootScope', '$route', '$cookieStore', 'adsProfile', 'adsMain', 'adsRes', function($scope, $location, $rootScope, $route, $cookieStore, adsProfile, adsMain, adsRes) {
 	
 	var username = $cookieStore.get('username');
 	var accessToken = $cookieStore.get('access_token');
@@ -26,28 +26,29 @@ adsApp.controller("ControllerProfile",  ['$scope', '$location', '$rootScope', '$
 
   $rootScope.$broadcast('pageChanged', { pageTitle: "Edit Profile"});
 
-  $scope.updateProfile = function(editProfileForm) {
-      if (!editProfileForm.name || !editProfileForm.email || !editProfileForm.phoneNumber) {
+  $scope.updateProfile = function(formProfile) {
+      if (!formProfile.name || !formProfile.email || !formProfile.phoneNumber) {
           return;
       }
-
-      userProfile.ediProfile(editProfileForm).then(function(data) {
+      adsProfile.updateProfile(formProfile).then(function(data) {
           $route.reload();
+          adsMain.displayMessage("User profile successfully updated.", "success");
       }, function(error) {
-
+      		adsMain.displayMessage("Error, refresh page!", "error");
       });
   };
 
-  $scope.changePassword = function(credentials, changePasswordForm) {
-      if (!credentials.newPassword || !credentials.confirmPassword ||
-          !credentials.oldPassword) {
+  $scope.changePassword = function(userDetails, formRegister) {
+      if (!userDetails.newPassword || !userDetails.confirmPassword ||
+          !userDetails.oldPassword) {
           return;
       }
 
-      userProfile.changePassword(credentials).then(function(data) {
+      adsProfile.changePassword(userDetails).then(function(data) {
           $route.reload();
+          adsMain.displayMessage("Password successfully updated.", "success");
       }, function(error) {
-
+      		adsMain.displayMessage("Error, refresh page!", "error");
       });
   };
 

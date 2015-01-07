@@ -2,6 +2,14 @@ adsApp.controller("MainController", ['$scope', '$location', '$rootScope', '$cook
 		
 	$scope.pageTitle = "Home";
 
+	var username = $cookieStore.get('username');
+	var accessToken = $cookieStore.get('access_token');
+
+	if(username && accessToken) {
+		$scope.isUserLogged = true;
+		$scope.currentUser = username;
+	}
+
 	$rootScope.$on("pageChanged", function(event, args) {
 		$scope.pageTitle = args.pageTitle;
 	});

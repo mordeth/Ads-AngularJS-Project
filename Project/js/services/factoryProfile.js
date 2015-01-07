@@ -34,11 +34,53 @@ adsApp.factory('adsProfile', function($http, $q, $cookieStore){
         return deferred.promise;
     };
 
+    var updateProfile = function(data) {
+        var deferred = $q.defer();
+        var headers = getUserHeaders();
+
+        $http({
+            method: 'PUT',
+            url: apiUrl + '/user/profile',
+            headers: headers,
+            data: data
+        })
+        .success(function(data, status, headers, config) {
+            deferred.resolve(data, status, headers, config);
+        })
+        .error(function(data, status, headers, config) {
+            deferred.reject(data, status, headers, config);
+        });
+
+        return deferred.promise;
+    };
+
+    var changePassword = function(data) {
+        var deferred = $q.defer();
+        var headers = getUserHeaders();
+
+        $http({
+            method: 'PUT',
+            url: apiUrl + '/user/changePassword',
+            headers: headers,
+            data: data
+        })
+        .success(function(data, status, headers, config) {
+            deferred.resolve(data, status, headers, config);
+        })
+        .error(function(data, status, headers, config) {
+            deferred.reject(data, status, headers, config);
+        });
+
+        return deferred.promise;
+    };
+
 
 	return{
 		getUserHeaders: getUserHeaders,
 		deleteUserHeaders: deleteUserHeaders,
-        getUserProfile: getUserProfile
+        getUserProfile: getUserProfile,
+        updateProfile: updateProfile,
+        changePassword: changePassword
 	}
 
 })	
