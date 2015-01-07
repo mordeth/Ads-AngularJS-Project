@@ -7,7 +7,7 @@ adsApp.controller("ControllerListAds",  ['$scope', '$location', '$rootScope', 'a
 	//Pagination with dirPaginate
 	var currentPage = 1;
     $scope.totalAds = 0;
-    $scope.adsPerPage = 5;
+    $scope.adsPerPage = 10;
     getResultsPage(1);
 
     $scope.pagination = {
@@ -23,7 +23,7 @@ adsApp.controller("ControllerListAds",  ['$scope', '$location', '$rootScope', 'a
     function getResultsPage(pageNumber) {
         adsRes.getAll(pageNumber, selectedTown, selectedCategory).then(function(response) {
 			$scope.adsData = response;
-			$scope.totalAds = parseInt(response.numPages) * 5;
+			$scope.totalAds = parseInt(response.numPages) * 10;
 			currentPage = pageNumber;
 		}, function(error) {
           adsMain.displayMessage(ajaxError, "warning");
@@ -41,7 +41,7 @@ adsApp.controller("ControllerListAds",  ['$scope', '$location', '$rootScope', 'a
        
         $scope.adsData = response;
     
-        $scope.totalAds = parseInt(response.numPages) * 5;
+        $scope.totalAds = parseInt(response.numPages) * 10;
         selectedCategory = categoryId;
 
         $scope.noAds = false;
@@ -68,7 +68,7 @@ adsApp.controller("ControllerListAds",  ['$scope', '$location', '$rootScope', 'a
        
         $scope.adsData = response;
     
-        $scope.totalAds = parseInt(response.numPages) * 5;
+        $scope.totalAds = parseInt(response.numPages) * 10;
         selectedTown = townId;
 
         $scope.noAds = false;

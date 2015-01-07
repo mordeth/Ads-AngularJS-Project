@@ -8,7 +8,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
 
-	font-family: Raleway;
+	font-family: Comfortaa;
 
 	font-weight: 400;
 
@@ -95,4 +95,26 @@ label.col-lg-6 {
 
 footer .container {
 	padding-top: 20px;
+}
+
+.ad-image {
+	margin-left: 10px;
+}
+
+.headingArea h3 {
+	padding-left: 10px;
+	font-size: 20px;
+	line-height: 1.2;
+}
+
+.sidebar h3 {
+	margin-top: 7px;
+	padding-left: 15px;
+}
+
+.navbar h1 {
+	margin-top: 7px;
+}
+.navbar a {
+	cursor: pointer;
 }

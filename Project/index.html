@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Comfortaa:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="inc/jquery.min.js"></script>
 		<script type="text/javascript" src="inc/angular.min.js"></script>
 		<script type="text/javascript" src="inc/angular-resource.js"></script>
@@ -24,10 +24,12 @@
 		<script type="text/javascript" src="js/controllers/ControllerMain.js"></script>
 		<script type="text/javascript" src="js/controllers/ControllerRegistration.js"></script>
 		<script type="text/javascript" src="js/controllers/ControllerLogin.js"></script>
+		<script type="text/javascript" src="js/controllers/ControllerProfile.js"></script>
 
-		<script type="text/javascript" src="js/factories/factoryListAds.js"></script>
-		<script type="text/javascript" src="js/factories/factoryMain.js"></script>
-		<script type="text/javascript" src="js/factories/factoryUser.js"></script>
+		<script type="text/javascript" src="js/services/factoryListAds.js"></script>
+		<script type="text/javascript" src="js/services/factoryMain.js"></script>
+		<script type="text/javascript" src="js/services/factoryUser.js"></script>
+		<script type="text/javascript" src="js/services/factoryProfile.js"></script>
 	</head>
 	<body ng-controller="MainController">
 		<div class="navbar navbar-default">
@@ -44,7 +46,7 @@
 							<a href="#/register" ng-if="!isUserLogged">Register</a>
 						</li>
 						<li>
-							<span ng-if="isUserLogged">{{currentUser}}</span>
+							<a ng-if="isUserLogged"><span >{{currentUser}}</span></a>
 						</li>
 						<li>
 							<a ng-if="isUserLogged" ng-click="logout()">Logout</a>

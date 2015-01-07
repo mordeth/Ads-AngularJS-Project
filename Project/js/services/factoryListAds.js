@@ -5,7 +5,7 @@ adsApp.factory('adsRes', function($http, $q){
 		var deferred  = $q.defer();
 		$http({
 			method: 'GET',
-			url: apiUrl + '/ads?pagesize=5&startpage=' + pageNumber + '&TownId=' + townId + '&CategoryId=' + categoryId
+			url: apiUrl + '/ads?pagesize=10&startpage=' + pageNumber + '&TownId=' + townId + '&CategoryId=' + categoryId
 		})
 		.success(function(data, status, headers, config) {
 			deferred .resolve(data, status, headers, config);
