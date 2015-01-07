@@ -59,18 +59,15 @@
 					<div class="sidebar" ng-if="!isUserLogged">
 						<h3>Navigation</h3>
 						<ul class="nav">
-							<li>
-								<a href="#/login" ng-if="!isUserLogged">Login</a>
-							</li>
-							<li>
-								<a href="#/register" ng-if="!isUserLogged">Register</a>
-							</li>
+							<li><a href="#/home">Home </a></li>
+							<li><a href="#/login" ng-if="!isUserLogged">Login</a></li>
+							<li><a href="#/register" ng-if="!isUserLogged">Register</a></li>
 						</ul>
 					</div>
 
 					<div class="sidebar" ng-if="isUserLogged">
 						<ul class="nav">
-							<li><a href="#/home" ng-class="getClass('/home')" ng-click="loadHomePage()">Home </a></li>
+							<li><a href="#/home">Home </a></li>
 							<li><a ng-class="getClass('/user/ads')" ng-click="loadUserAds('')">My Ads</a></li>
 							<li><a ng-class="getClass('/user/publish-new-add')" ng-click="publishNewAdd()"> Publish New Add</a></li>
 							<li><a ng-class="getClass('/user/profile')" ng-click="editProfile()">Edit Profile</a></li>
