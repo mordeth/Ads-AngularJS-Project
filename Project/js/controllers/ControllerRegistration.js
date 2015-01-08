@@ -1,7 +1,8 @@
 adsApp.controller("ControllerRegister",  ['$scope', '$location', '$rootScope', 'adsUser', 'adsMain', 'adsRes', function($scope, $location, $rootScope, adsUser, adsMain, adsRes) {
-	if (authorizationService.userIsLogged()) {
+	if (adsUser.userLogged()) {
 		$location.path('/user/ads');
 	}
+
 	adsRes.getTowns().then(function(response) {
       $scope.townsFeed = response;
   }, function(error) {

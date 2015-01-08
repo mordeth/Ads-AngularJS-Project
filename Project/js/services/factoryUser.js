@@ -1,4 +1,4 @@
-adsApp.factory('adsUser', function($http, $q){	
+adsApp.factory('adsUser', function($http, $q, $cookieStore){	
 
 	function login(userDetails) {
     var deferred = $q.defer();
@@ -38,9 +38,21 @@ adsApp.factory('adsUser', function($http, $q){
 
    }
 
-	return{
-		login: login,
-		register: register,
-	}
+   function userLogged() {
+    var username = $cookieStore.get('username');
+    var accessToken = $cookieStore.get('access_token');
+
+    if(username && accessToken) {
+        return true;
+    } else {
+        return false;
+    }
+   }
+
+   return{
+	 login: login,
+	 register: register,
+     userLogged: userLogged
+   }
 
 })	
