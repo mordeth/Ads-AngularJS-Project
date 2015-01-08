@@ -15,6 +15,10 @@ var adsApp = angular.module("adsApp", ['ngRoute', 'ngResource', 'angularUtils.di
 		controller: 'ControllerRegister',
 		templateUrl: 'templates/register.html'
 	}).
+	when('/user/publish', {
+		controller: 'ControllerPublish',
+		templateUrl: 'templates/newAd.html'
+	}).
 	when('/user/profile', {
 		controller: 'ControllerProfile',
 		templateUrl: 'templates/userProfile.html',

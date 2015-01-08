@@ -118,3 +118,7 @@ footer .container {
 .navbar a {
 	cursor: pointer;
 }
+
+.paddingBottom {
+	padding-bottom: 10px;
+}
