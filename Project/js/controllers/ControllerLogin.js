@@ -3,7 +3,8 @@ adsApp.controller("ControllerLogin",  ['$scope', '$location', '$rootScope', '$co
 	$scope.username = $cookieStore.get('username');
 
 	$rootScope.$broadcast('pageChanged', { pageTitle: "Login"});
-
+	$rootScope.$broadcast('notAdsPage');
+	
 	$scope.login = function(userDetails, form) {
 		adsUser.login(userDetails).then(function(response) {
 			$cookieStore.put('access_token', response.access_token);

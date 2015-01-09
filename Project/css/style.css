@@ -28,7 +28,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-#adsList {
+#adsList, #userAdsList {
 
 	margin: 0px;
 
@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-#adsList li {
+#adsList li, #userAdsList li {
 
 	list-style: none;
 
@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-#adsList li h3 {
+#adsList li h3, #userAdsList li h3{
 
 	margin: 0px;
 

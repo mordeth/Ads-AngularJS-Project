@@ -3,6 +3,7 @@ adsApp.controller("ControllerListAds",  ['$scope', '$location', '$rootScope', 'a
     var selectedCategory = '';
 	var selectedTown = '';
     $scope.noAds = false;
+	$rootScope.$broadcast('notAdsPage');
 	
 	//Pagination with dirPaginate
 	var currentPage = 1;

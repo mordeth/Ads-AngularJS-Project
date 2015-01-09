@@ -2,7 +2,8 @@ adsApp.controller("ControllerProfile",  ['$scope', '$location', '$rootScope', '$
 	
 	var username = $cookieStore.get('username');
 	var accessToken = $cookieStore.get('access_token');
-
+	$rootScope.$broadcast('notAdsPage');
+	
 	if(!username || !accessToken) {
 		$location.path('/');
 	}
@@ -34,7 +35,7 @@ adsApp.controller("ControllerProfile",  ['$scope', '$location', '$rootScope', '$
           $route.reload();
           adsMain.displayMessage("User profile successfully updated.", "success");
       }, function(error) {
-      		adsMain.displayMessage("Error, refresh page!", "error");
+      	adsMain.displayMessage("Error, refresh page!", "error");
       });
   };
 

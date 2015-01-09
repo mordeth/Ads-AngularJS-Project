@@ -1,5 +1,6 @@
 adsApp.controller("ControllerPublish",  ['$scope', '$location', '$rootScope', 'adsRes', 'adsMain', 'adsData', 'adsUser', function($scope, $location, $rootScope, adsRes, adsMain, adsData, adsUser) {
 	$scope.imageData = '';
+	$rootScope.$broadcast('notAdsPage');
 
 	adsRes.getCategories().then(function(response) {
         $scope.categoriesFeed = response;
@@ -12,13 +13,17 @@ adsApp.controller("ControllerPublish",  ['$scope', '$location', '$rootScope', 'a
     }, function(error) {
         adsMain.displayMessage(ajaxError, "warning");
     });
+	
+	$rootScope.$broadcast('pageChanged', { pageTitle: "Publish Ad"});
 
     $scope.fileSelected = function(fileInputField) {
+		delete $scope.adDetails.imageDataUrl;
         var file = fileInputField.files[0];
 
         if (file.type.match(/image\/.*/)) {
             var reader = new FileReader();
             reader.onload = function() {
+				$scope.adDetails.imageDataUrl = reader.result;
                 $('.adImage').attr('src', reader.result);
                 $('.image-title').attr('value', file.name);
             };
@@ -38,6 +43,7 @@ adsApp.controller("ControllerPublish",  ['$scope', '$location', '$rootScope', 'a
                 $('#text').val('');
                 $('#selectTown').val('');
                 $('#selectCategory').val('');
+				$location.path('/user/ads');
             }, function(error) {
                adsMain.displayMessage("Error, refresh page!", "error");
             });

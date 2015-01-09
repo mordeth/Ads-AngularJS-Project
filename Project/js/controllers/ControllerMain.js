@@ -1,6 +1,8 @@
 adsApp.controller("MainController", ['$scope', '$location', '$rootScope', '$cookieStore', 'adsUser', 'adsMain', function($scope, $location, $rootScope, $cookieStore, adsUser, adsMain) {
 		
 	$scope.pageTitle = "Home";
+	
+	$scope.isUserAds = false;
 
 	if (adsUser.userLogged()) {
 		$scope.isUserLogged = true;
@@ -14,6 +16,14 @@ adsApp.controller("MainController", ['$scope', '$location', '$rootScope', '$cook
 	$rootScope.$on("userLogged", function() {
 		$scope.isUserLogged = true;
 		$scope.currentUser = $cookieStore.get('username');
+	});
+	
+	$rootScope.$on("userAdsPage", function() {
+		$scope.isUserAds = true;
+	});
+	
+	$rootScope.$on("notAdsPage", function() {
+		$scope.isUserAds = false;
 	});
 
 	$scope.logout = function () {

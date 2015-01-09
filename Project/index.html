@@ -26,6 +26,7 @@
 		<script type="text/javascript" src="js/controllers/ControllerLogin.js"></script>
 		<script type="text/javascript" src="js/controllers/ControllerProfile.js"></script>
 		<script type="text/javascript" src="js/controllers/ControllerPublish.js"></script>
+		<script type="text/javascript" src="js/controllers/ControllerUserAds.js"></script>
 
 		<script type="text/javascript" src="js/services/factoryListAds.js"></script>
 		<script type="text/javascript" src="js/services/factoryMain.js"></script>
@@ -75,6 +76,16 @@
 							<li><a href="#/user/ads">My Ads</a></li>
 							<li><a href="#/user/publish">Publish New Add</a></li>
 							<li><a href="#/user/profile">Edit Profile</a></li>
+						</ul>
+					</div>
+					
+					<div class="sidebar" ng-if="isUserAds">
+						<ul class="nav" ng-controller="ControllerUserAds">
+							<li><a href="#/user/ads">All</a></li>
+							<li><a href="#/user/ads/published">Published</a></li>
+							<li><a href="#/user/ads/waitingapproval">Waiting Approval</a></li>
+							<li><a href="#/user/ads/inactive">Inactive</a></li>
+							<li><a href="#/user/ads/rejected">Rejected</a></li>
 						</ul>
 					</div>
 				</div>

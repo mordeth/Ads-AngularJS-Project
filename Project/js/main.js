@@ -19,6 +19,26 @@ var adsApp = angular.module("adsApp", ['ngRoute', 'ngResource', 'angularUtils.di
 		controller: 'ControllerPublish',
 		templateUrl: 'templates/newAd.html'
 	}).
+	when('/user/ads', {
+		controller: 'ControllerUserAds',
+		templateUrl: 'templates/userAds.html'
+	}).
+	when('/user/ads/published', {
+		controller: 'ControllerUserAds',
+		templateUrl: 'templates/userAds.html'	
+	}).
+	when('/user/ads/waitingapproval', {
+		controller: 'ControllerUserAds',
+		templateUrl: 'templates/userAds.html'	
+	}).
+	when('/user/ads/inactive', {
+		controller: 'ControllerUserAds',
+		templateUrl: 'templates/userAds.html'
+	}).
+	when('/user/ads/rejected', {
+		controller: 'ControllerUserAds',
+		templateUrl: 'templates/userAds.html'
+	}).
 	when('/user/profile', {
 		controller: 'ControllerProfile',
 		templateUrl: 'templates/userProfile.html',

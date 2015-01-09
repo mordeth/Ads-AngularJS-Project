@@ -1,0 +1,77 @@
+<div class="row">
+	<div class="col-lg-12 whiteBG" ng-if="noAds">
+		<div class="row col centered">
+			<h2 class="text-center">No ads in this category.</h2>
+		</div>
+	</div>	
+	<div class="col-md-12">
+		<ul id="userAdsList">
+			<li dir-paginate="ad in userAdsData.ads | itemsPerPage: adsPerPage" total-items="totalAds">
+				<div class="row headingArea">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-lg-8">
+								<h3 class="adTitle">{{ad.title}}</h3>
+							</div>
+							<div class="col-lg-4 pull-right">
+								<span class="pull-right"> {{ad.date | date:"EEE dd-MMM-yyyy"}} </span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row headingArea">
+					<div class="col-lg-9">
+						<div class="row">
+							<div class="col-lg-4">
+								<img src="images/noimage.jpg" ng-src="{{ad.imageDataUrl}}" alt="" class="adImage img-responsive">
+							</div>
+							<div class="col-lg-8">
+								<p> {{ad.text}} </p>
+								
+								<div> <strong>Category:</strong> </div>
+								<div>
+									{{ad.categoryName ? ad.categoryName : 'Not available'}}
+								</div>
+								
+								<div><strong>Town:</strong> </div>
+								<div>
+									{{ad.townName ? ad.townName : 'Not available'}}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="text-cetered">
+									<strong>Status:</strong>
+								</div>
+								<div>{{ad.status}} </div>
+								<div class="ad-edit-buttons">
+									<a class="btn btn-info ad-edit-buttons-link" ng-model="userAd.adId" ng-click="deactivateAd(ad.id)" ng-if="ad.status === 'WaitingApproval' ||
+ad.status === 'Published'">Deactivate</a>
+								</div>
+								<div class="ad-edit-buttons">
+									<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}" ng-click="openEditModal(ad.id)" ng-if="ad.status === 'Inactive' ||
+ad.status === 'Rejected' ">Edit</a>
+								</div>
+								<div class="ad-edit-buttons">
+									<a class="btn btn-info ad-edit-buttons-link" ng-model="userAd.adId" ng-click="republishAd(ad.id)" ng-if="ad.status === 'Inactive' ||
+ad.status === 'Rejected' ">Publish <span class="avoidwrap">again</span></a>
+								</div>
+								<div class="ad-edit-buttons">
+									<a class="btn btn-info ad-edit-buttons-link" ng-model="userAd.adId" ng-click="deleteAd(ad.id)" ng-if="ad.status === 'Inactive' ||
+ad.status === 'Rejected' ">Delete</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+</div>
+<div class='col-g-12 text-centered'>
+	<dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)" template-url="templates/dirPagination.tpl.html"></dir-pagination-controls>
+</div>
