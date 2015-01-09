@@ -122,3 +122,13 @@ footer .container {
 .paddingBottom {
 	padding-bottom: 10px;
 }
+
+#userAdsList .btn {
+	width: 80%;
+	text-align: center;
+	margin-top: 5px;
+}
+
+.adStatus {
+	padding-bottom: 10px;
+}

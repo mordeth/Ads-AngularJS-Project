@@ -1,4 +1,4 @@
-var adsApp = angular.module("adsApp", ['ngRoute', 'ngResource', 'angularUtils.directives.dirPagination','ngCookies'])
+var adsApp = angular.module("adsApp", ['ngRoute', 'ngResource', 'ui.bootstrap', 'angularUtils.directives.dirPagination','ngCookies'])
 .config(function($routeProvider){
 	$routeProvider.when('/',
 	{

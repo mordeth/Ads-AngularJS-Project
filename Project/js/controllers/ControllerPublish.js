@@ -5,13 +5,13 @@ adsApp.controller("ControllerPublish",  ['$scope', '$location', '$rootScope', 'a
 	adsRes.getCategories().then(function(response) {
         $scope.categoriesFeed = response;
     }, function(error) {
-        adsMain.displayMessage(ajaxError, "warning");
+       adsMain.displayMessage("Error, refresh page!", "error");
     });
 
     adsRes.getTowns().then(function(response) {
         $scope.townsFeed = response;
     }, function(error) {
-        adsMain.displayMessage(ajaxError, "warning");
+        adsMain.displayMessage("Error, refresh page!", "error");
     });
 	
 	$rootScope.$broadcast('pageChanged', { pageTitle: "Publish Ad"});

@@ -43,24 +43,23 @@
 					<div class="col-lg-3">
 						<div class="row">
 							<div class="col-lg-12">
-								<div class="text-cetered">
-									<strong>Status:</strong>
+								<div class="adStatus">
+									<strong>Status:</strong> {{ad.status}}
 								</div>
-								<div>{{ad.status}} </div>
-								<div class="ad-edit-buttons">
-									<a class="btn btn-info ad-edit-buttons-link" ng-model="userAd.adId" ng-click="deactivateAd(ad.id)" ng-if="ad.status === 'WaitingApproval' ||
+								<div class="actionButtons">
+									<a class="btn btn-info" ng-model="userAd.adId" ng-click="deactivateAd(ad.id)" ng-if="ad.status === 'WaitingApproval' ||
 ad.status === 'Published'">Deactivate</a>
 								</div>
-								<div class="ad-edit-buttons">
-									<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}" ng-click="openEditModal(ad.id)" ng-if="ad.status === 'Inactive' ||
+								<div class="actionButtons">
+									<a class="btn btn-info" ng-model="userAd.adId" ng-click="modalEdit(ad.id)" ng-if="ad.status === 'Inactive' ||
 ad.status === 'Rejected' ">Edit</a>
 								</div>
-								<div class="ad-edit-buttons">
-									<a class="btn btn-info ad-edit-buttons-link" ng-model="userAd.adId" ng-click="republishAd(ad.id)" ng-if="ad.status === 'Inactive' ||
+								<div class="actionButtons">
+									<a class="btn btn-info" ng-model="userAd.adId" ng-click="republishAd(ad.id)" ng-if="ad.status === 'Inactive' ||
 ad.status === 'Rejected' ">Publish <span class="avoidwrap">again</span></a>
 								</div>
-								<div class="ad-edit-buttons">
-									<a class="btn btn-info ad-edit-buttons-link" ng-model="userAd.adId" ng-click="deleteAd(ad.id)" ng-if="ad.status === 'Inactive' ||
+								<div class="actionButtons">
+									<a class="btn btn-info" ng-model="userAd.adId" ng-click="deleteAd(ad.id)" ng-if="ad.status === 'Inactive' ||
 ad.status === 'Rejected' ">Delete</a>
 								</div>
 							</div>

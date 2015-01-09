@@ -1,4 +1,4 @@
-adsApp.controller("ControllerUserAds",  ['$scope', '$route', '$location', '$rootScope', 'adsRes', 'adsMain', 'adsData', 'adsUser', function($scope, $route, $location, $rootScope, adsRes, adsMain, adsData, adsUser) {
+adsApp.controller("ControllerUserAds",  ['$scope', '$route', '$location', '$rootScope', 'adsRes', 'adsMain', 'adsData', 'adsUser', '$modal', function($scope, $route, $location, $rootScope, adsRes, adsMain, adsData, adsUser, $modal) {
 	var ajaxError = "Error loading feed, please try again later!";
     $scope.noAds = false;
 	
@@ -65,6 +65,19 @@ adsApp.controller("ControllerUserAds",  ['$scope', '$route', '$location', '$root
             });
         }
     };
+	
+	$scope.modalEdit = function (adID) {
+		var modalInstance = $modal.open({
+			templateUrl: 'templates/editAd.html',
+			controller: 'ControllerEditAd',
+			size: 'lg',
+			resolve: {
+				adID: function () {
+					return adID;
+				}
+			}
+		});
+	};
 	
 }])
 

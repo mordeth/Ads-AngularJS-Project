@@ -120,13 +120,53 @@ adsApp.factory('adsData', function($http, $q, $cookieStore, adsProfile, $locatio
         });
         return deferred .promise;
     }
+	
+	function getSingleAd(adID) {
+        var deferred  = $q.defer();
+        var headers = adsProfile.getUserHeaders(); 
 
+        $http({
+            method: 'GET',
+            url: apiUrl + '/user/ads/' + adID,
+            headers: headers
+        })
+        .success(function(data, status, headers, config) {
+            deferred .resolve(data, status, headers, config);
+        })
+        .error(function(data, status, headers, config) {
+            deferred .reject(data, status, headers, config);
+        });
+        return deferred .promise;
+    }
+	
+	function editAd(adID, adsDetails) {
+        var deferred = $q.defer();
+        var headers = adsProfile.getUserHeaders();
+
+        $http({
+            method: 'PUT',
+            url: apiUrl + '/user/ads/' + adID,
+            data: adsDetails,
+            headers: headers
+        })
+        .success(function(data, status, headers, config) {              
+            deferred.resolve(data, status, headers, config);
+        })
+        .error(function(data, status, headers, config) {
+            deferred.reject(data, status, headers, config);
+        });
+
+        return deferred.promise;
+    }
+	
     return{
       publishAd: publishAd,
       getUserAds: getUserAds,
 	  deleteAd: deleteAd,
 	  deactivateAd: deactivateAd,
-	 republishAd: republishAd
+	  republishAd: republishAd,
+	  getSingleAd: getSingleAd,
+	  editAd: editAd
     }
 
 })    
