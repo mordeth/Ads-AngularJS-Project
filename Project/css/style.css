@@ -132,3 +132,7 @@ footer .container {
 .adStatus {
 	padding-bottom: 10px;
 }
+
+.adminHeader {
+    background-image: linear-gradient(to bottom, #93f56f 0px, #e8b015 100%) !important;
+}

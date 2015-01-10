@@ -19,6 +19,7 @@
 
 
 		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/views/paths.js"></script>
 
 		<script type="text/javascript" src="js/controllers/ControllerListAds.js"></script>
 		<script type="text/javascript" src="js/controllers/ControllerMain.js"></script>
@@ -28,17 +29,22 @@
 		<script type="text/javascript" src="js/controllers/ControllerPublish.js"></script>
 		<script type="text/javascript" src="js/controllers/ControllerUserAds.js"></script>
 		<script type="text/javascript" src="js/controllers/ControllerEditAd.js"></script>
+		<script type="text/javascript" src="js/controllers/ControllerAdmin.js"></script>
 
 		<script type="text/javascript" src="js/services/factoryListAds.js"></script>
 		<script type="text/javascript" src="js/services/factoryMain.js"></script>
 		<script type="text/javascript" src="js/services/factoryUser.js"></script>
 		<script type="text/javascript" src="js/services/factoryProfile.js"></script>
 		<script type="text/javascript" src="js/services/factoryAd.js"></script>
+		<script type="text/javascript" src="js/services/factoryAdmin.js"></script>
 	</head>
 	<body ng-controller="MainController">
-		<div class="navbar navbar-default">
+		<div class="navbar navbar-default" ng-class="{adminHeader: isAdminLogged==true}">
 			<div class="container">
-				<div class="col-lg-6">
+				<div class="col-lg-6" ng-if="isAdminLogged">
+					<h1>Ads Administration - {{pageTitle}}</h1>
+				</div>
+				<div class="col-lg-6" ng-if="!isAdminLogged">
 					<h1>Ads - {{pageTitle}}</h1>
 				</div>
 				<div class="col-lg-6">
@@ -72,13 +78,23 @@
 					</div>
 
 					<div class="sidebar" ng-if="isUserLogged">
-						<ul class="nav">
+					
+						<ul class="nav" ng-if="!isAdminLogged">
 							<li><a href="#/home">Home </a></li>
 							<li><a href="#/user/ads">My Ads</a></li>
 							<li><a href="#/user/publish">Publish New Add</a></li>
 							<li><a href="#/user/profile">Edit Profile</a></li>
 						</ul>
+						
+						<ul class="nav" ng-if="isAdminLogged">
+							<li><a href="#/admin/ads">Ads</a></li>
+							<li><a href="#/admin/users">Users</a></li>
+							<li><a href="#/admin/categories">Categories</a></li>
+							<li><a href="#/admin/towns">Towns</a></li>
+						</ul>
+						
 					</div>
+					
 					
 					<div class="sidebar" ng-if="isUserAds">
 						<ul class="nav" ng-controller="ControllerUserAds">

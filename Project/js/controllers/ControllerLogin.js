@@ -9,9 +9,16 @@ adsApp.controller("ControllerLogin",  ['$scope', '$location', '$rootScope', '$co
 		adsUser.login(userDetails).then(function(response) {
 			$cookieStore.put('access_token', response.access_token);
 			$cookieStore.put('username', response.username);
+			if(response.isAdmin){
+				$cookieStore.put('isAdminUser', response.isAdmin);
+			}
 			adsMain.displayMessage("You are successfully logged in!", "success");
 			$rootScope.$broadcast('userLogged');
-			$location.path('/');
+			if(response.isAdmin){
+				$location.path('/admin/ads');
+			} else {
+				$location.path('/');
+			}
 		}, function(error) {
 			if (error.error_description) {
 				adsMain.displayMessage(error.error_description, "error");

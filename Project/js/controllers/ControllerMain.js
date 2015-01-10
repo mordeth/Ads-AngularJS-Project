@@ -3,12 +3,19 @@ adsApp.controller("MainController", ['$scope', '$location', '$rootScope', '$cook
 	$scope.pageTitle = "Home";
 	
 	$scope.isUserAds = false;
-
+	$scope.isAdminLogged = false;
+	
 	if (adsUser.userLogged()) {
 		$scope.isUserLogged = true;
 		$scope.currentUser = $cookieStore.get('username');
+		if($cookieStore.get('isAdminUser')) {
+			$scope.isAdminLogged = true;
+		} else {
+			$scope.isAdminLogged = false;
+		}
 	} else {
 		$scope.isUserLogged = false;
+		$scope.isAdminLogged = false;
 		$scope.currentUser = '';
 	}
 
@@ -19,6 +26,11 @@ adsApp.controller("MainController", ['$scope', '$location', '$rootScope', '$cook
 	$rootScope.$on("userLogged", function() {
 		$scope.isUserLogged = true;
 		$scope.currentUser = $cookieStore.get('username');
+		if($cookieStore.get('isAdminUser')) {
+			$scope.isAdminLogged = true;
+		} else {
+			$scope.isAdminLogged = false;
+		}
 	});
 	
 	$rootScope.$on("userAdsPage", function() {
@@ -32,12 +44,13 @@ adsApp.controller("MainController", ['$scope', '$location', '$rootScope', '$cook
 	$scope.logout = function () {
 		$cookieStore.remove('access_token');
 		$cookieStore.remove('username');
+		$cookieStore.remove('isAdminUser');
 		$rootScope.userAds = {};
 		$location.path('/');
 		$scope.isUserLogged = false;
+		$scope.isAdminLogged = false;
 		adsMain.displayMessage("You successfully logged out!", "success");
 	}
-   
 }]);
 
 
