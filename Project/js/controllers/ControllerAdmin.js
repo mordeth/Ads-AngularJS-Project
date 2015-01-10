@@ -154,6 +154,19 @@ adsApp.controller("ControllerAdmin",  ['$scope', '$route', '$location', '$rootSc
             });
         }
     }
+	
+	$scope.modalEdit = function (adID) {
+		var modalInstance = $modal.open({
+			templateUrl: 'templates/adminEditAd.html',
+			controller: 'ControllerAdminEditAd',
+			size: 'lg',
+			resolve: {
+				adID: function () {
+					return adID;
+				}
+			}
+		});
+	};
 }])
 
 

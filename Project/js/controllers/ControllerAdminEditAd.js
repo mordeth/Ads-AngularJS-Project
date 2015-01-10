@@ -1,4 +1,4 @@
-adsApp.controller("ControllerEditAd",  ['$scope', '$route', '$location', '$rootScope', 'adsRes', 'adsMain', 'adsData', 'adsUser', 'adID', '$modalInstance', function($scope, $route, $location, $rootScope, adsRes, adsMain, adsData, adsUser, adID, $modalInstance) {
+adsApp.controller("ControllerAdminEditAd",  ['$scope', '$route', '$location', '$rootScope', 'adsRes', 'adsMain', 'adsAdmin', 'adsUser', 'adID', '$modalInstance', '$filter', function($scope, $route, $location, $rootScope, adsRes, adsMain, adsAdmin, adsUser, adID, $modalInstance, $filter) {
 	
 	if(!adsUser.userLogged()) {
 		$location.path('/');
@@ -6,18 +6,36 @@ adsApp.controller("ControllerEditAd",  ['$scope', '$route', '$location', '$rootS
 	
 	$scope.adID = adID;
 
-	adsData.getSingleAd(adID).then(function(response) {
+	$scope.statusArray = [
+		{id: 0, status: 'Inactive'},
+		{id: 1, status: 'WaitingApproval'},
+		{id: 2, status: 'Published'},
+		{id: 3, status: 'Rejected'}
+	];
+	
+	adsAdmin.getSingleAd(adID).then(function(response) {
 		$scope.adDetails = response;
 		$scope.formEditAd = {
 			title: response.title,
 			text: response.text,
 			imageDataUrl: response.imageDataUrl ? response.imageDataUrl : 'images/noimage.jpg',
 			categoryId: response.categoryId ? response.categoryId : null,
-			townId: response.townId ? response.townId : null
+			townId: response.townId ? response.townId : null,
+			status: response.status,
+			date: formatDate(response.date)
 		};
 	}, function(error) {
 		adsMain.displayMessage("Error, refresh page!", "error");
 	});
+	
+	function formatDate(input){
+		var date = $filter('date')(input, "MM/dd/yyyy");
+		var splitted = date.split(/\//);
+		var day = splitted[1];
+		var month = splitted[0];
+		var year = splitted[2];
+		return month + '/' + day + '/' + year;
+	}
 
 	adsRes.getCategories().then(function(response) {
 		$scope.categoriesFeed = response;
@@ -63,11 +81,11 @@ adsApp.controller("ControllerEditAd",  ['$scope', '$route', '$location', '$rootS
 		if (!formEditAd.title || !formEditAd.text) {
 			return;
 		}
-		
-		adsData.editAd(adID, formEditAd).then(function(data) {
+
+		adsAdmin.editAd(adID, formEditAd).then(function(data) {
 			$modalInstance.close();
 			$route.reload();
-			adsMain.displayMessage("Ad was successfully edited, please wait to be approved!", "success");
+			adsMain.displayMessage("Ad was successfully edited!", "success");
 		}, function(error) {
 			$modalInstance.close();
 			$route.reload();

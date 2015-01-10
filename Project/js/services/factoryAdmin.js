@@ -80,11 +80,51 @@ adsApp.factory('adsAdmin', function($http, $q, $cookieStore, adsProfile, $locati
         return deferred.promise;
     }
 	
+	function getSingleAd(adID) {
+        var deferred  = $q.defer();
+        var headers = adsProfile.getUserHeaders(); 
+
+        $http({
+            method: 'GET',
+            url: apiUrl + '/admin/ads/' + adID,
+            headers: headers
+        })
+        .success(function(data, status, headers, config) {
+            deferred .resolve(data, status, headers, config);
+        })
+        .error(function(data, status, headers, config) {
+            deferred .reject(data, status, headers, config);
+        });
+        return deferred .promise;
+    }
+	
+	function editAd(adID, adsDetails) {
+        var deferred = $q.defer();
+        var headers = adsProfile.getUserHeaders();
+
+        $http({
+            method: 'PUT',
+            url: apiUrl + '/admin/ads/' + adID,
+            data: adsDetails,
+            headers: headers
+        })
+        .success(function(data, status, headers, config) {              
+            deferred.resolve(data, status, headers, config);
+        })
+        .error(function(data, status, headers, config) {
+            deferred.reject(data, status, headers, config);
+        });
+
+        return deferred.promise;
+    }
+	
 	return{
       getAdminAds: getAdminAds,
 	  approveAd: approveAd,
 	  rejectAd: rejectAd,
-	  deleteAd: deleteAd
+	  deleteAd: deleteAd,
+	  getSingleAd: getSingleAd,
+	  editAd: editAd
     }
 
 })    
