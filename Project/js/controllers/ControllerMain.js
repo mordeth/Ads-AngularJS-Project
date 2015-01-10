@@ -7,6 +7,9 @@ adsApp.controller("MainController", ['$scope', '$location', '$rootScope', '$cook
 	if (adsUser.userLogged()) {
 		$scope.isUserLogged = true;
 		$scope.currentUser = $cookieStore.get('username');
+	} else {
+		$scope.isUserLogged = false;
+		$scope.currentUser = '';
 	}
 
 	$rootScope.$on("pageChanged", function(event, args) {

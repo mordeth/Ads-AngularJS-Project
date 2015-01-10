@@ -1,5 +1,9 @@
 adsApp.controller("ControllerEditAd",  ['$scope', '$route', '$location', '$rootScope', 'adsRes', 'adsMain', 'adsData', 'adsUser', 'adID', '$modalInstance', function($scope, $route, $location, $rootScope, adsRes, adsMain, adsData, adsUser, adID, $modalInstance) {
 	
+	if(!adsUser.userLogged()) {
+		$location.path('/');
+	}
+	
 	$scope.adID = adID;
 
 	adsData.getSingleAd(adID).then(function(response) {

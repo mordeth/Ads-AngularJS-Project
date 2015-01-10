@@ -1,18 +1,18 @@
-adsApp.controller("ControllerProfile",  ['$scope', '$location', '$rootScope', '$route', '$cookieStore', 'adsProfile', 'adsMain', 'adsRes', function($scope, $location, $rootScope, $route, $cookieStore, adsProfile, adsMain, adsRes) {
+adsApp.controller("ControllerProfile",  ['$scope', '$location', '$rootScope', '$route', '$cookieStore', 'adsProfile', 'adsMain', 'adsRes', 'adsUser', function($scope, $location, $rootScope, $route, $cookieStore, adsProfile, adsMain, adsRes, adsUser) {
 	
 	var username = $cookieStore.get('username');
 	var accessToken = $cookieStore.get('access_token');
 	$rootScope.$broadcast('notAdsPage');
 	
-	if(!username || !accessToken) {
+	if(!adsUser.userLogged()) {
 		$location.path('/');
 	}
 
 	adsRes.getTowns().then(function(response) {
       $scope.townsFeed = response;
-  }, function(error) {
-      adsMain.displayMessage("Error, refresh page!", "error");
-  });
+	}, function(error) {
+	  adsMain.displayMessage("Error, refresh page!", "error");
+	});
 
 	adsProfile.getUserProfile().then(function(response) {
     $scope.formProfile = {

@@ -1,4 +1,9 @@
 adsApp.controller("ControllerPublish",  ['$scope', '$location', '$rootScope', 'adsRes', 'adsMain', 'adsData', 'adsUser', function($scope, $location, $rootScope, adsRes, adsMain, adsData, adsUser) {
+	
+	if(!adsUser.userLogged()) {
+		$location.path('/');
+	}
+	
 	$scope.imageData = '';
 	$rootScope.$broadcast('notAdsPage');
 

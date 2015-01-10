@@ -2,6 +2,10 @@ adsApp.controller("ControllerUserAds",  ['$scope', '$route', '$location', '$root
 	var ajaxError = "Error loading feed, please try again later!";
     $scope.noAds = false;
 	
+	if(!adsUser.userLogged()) {
+		$location.path('/');
+	}
+	
 	var currentPage = 1;
     $scope.totalAds = 0;
     $scope.adsPerPage = 3;
@@ -33,14 +37,32 @@ adsApp.controller("ControllerUserAds",  ['$scope', '$route', '$location', '$root
         });
     }
 	
-	$scope.deleteAd = function(adID) {
+	$scope.deleteAd = function(adDetails) {
         if (adsUser.userLogged()) {
-            adsData.deleteAd(adID).then(function(response) {
-				adsMain.displayMessage("Ad delete successfully!", "success");
-				$route.reload();
-            }, function(error) {
-               adsMain.displayMessage("Error, refresh page!", "error");
-            });
+			var modalInstance = $modal.open({
+				templateUrl: 'templates/deleteAd.html',
+				controller: function ($scope, $modalInstance, adDetails) {
+					$scope.adDetails = adDetails;
+					$scope.ok = function () {
+						adsData.deleteAd(adDetails.id).then(function(response) {
+							adsMain.displayMessage("Ad delete successfully!", "success");
+							$route.reload();
+						}, function(error) {
+						   adsMain.displayMessage("Error, refresh page!", "error");
+						});
+						$modalInstance.close();
+					};
+					$scope.cancel = function () {
+						$modalInstance.close();
+					};
+				},
+				size: 'lg',
+				resolve: {
+					adDetails: function () {
+						return adDetails;
+					}
+				}
+			});
         }
     };
 	
@@ -78,7 +100,6 @@ adsApp.controller("ControllerUserAds",  ['$scope', '$route', '$location', '$root
 			}
 		});
 	};
-	
 }])
 
 
